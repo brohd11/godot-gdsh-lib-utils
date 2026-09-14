@@ -50,10 +50,17 @@ Commands that list or change project files use `GDSh.Utils` host hooks from
 
 ## Exporting
 
-`manifest.gd` preloads every command so plugin exporters that follow preloads
-include them; preload it from the host. GDSh skips `manifest.gd` when loading the
-directory. For game exports, include all resources as described in GDSh's
-distribution docs.
+`manifest.gd` preloads every command for use with [PluginExporter](https://github.com/brohd11/Godot-Plugin-Exporter)
+
+## Install
+
+Download the release and place the contents in the addons folder.
+
+I use [gdaddon](https://github.com/brohd11/gdaddon) to manage the addon.
+```
+cd ~/your/project/
+gdaddon install brohd11/godot-gdsh-lib-utils
+```
 
 ## Validation
 

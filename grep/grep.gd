@@ -22,9 +22,9 @@ static func get_self_command_data() -> Dictionary:
 
 func _get_flags() -> Dictionary:
 	var options = Options.new()
-	options.add_option("--regex", {&"help": "Treat the pattern as a regular expression."})
-	options.add_option("--ignore-case", {&"help": "Case-insensitive match."})
-	options.add_option("--invert", {&"help": "Keep lines that do not match."})
+	options.add_option("--regex", {&"short": "E", &"help": "Treat the pattern as a regular expression."})
+	options.add_option("--ignore-case", {&"short": "i", &"help": "Case-insensitive match."})
+	options.add_option("--invert", {&"short": "v", &"help": "Keep lines that do not match."})
 	return options.get_options()
 
 func _process_flag(flag:String):

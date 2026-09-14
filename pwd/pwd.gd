@@ -19,6 +19,7 @@ static func get_self_command_data():
 func _get_flags() -> Dictionary:
 	var options = Options.new()
 	options.add_option("--local", {
+		&"short": "l",
 		&"help": "Attempt local conversion to path"
 	})
 	return options.get_options()

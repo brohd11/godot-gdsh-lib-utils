@@ -22,9 +22,11 @@ static func get_self_command_data() -> Dictionary:
 func _get_flags() -> Dictionary:
 	var options = Options.new()
 	options.add_option("--recursive", {
+		&"short": "r",
 		&"help": "Descend into subdirectories."
 	})
 	options.add_option("--dirs", {
+		&"short": "d",
 		&"help": "List directories only."
 	})
 	options.add_option("--ext=", {
@@ -32,6 +34,7 @@ func _get_flags() -> Dictionary:
 		&"trailing_char": "",
 	})
 	options.add_option("--full-path", {
+		&"short": "f",
 		&"help": "Display full path instead of file/dir name."
 	})
 	return options.get_options()

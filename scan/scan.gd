@@ -29,10 +29,10 @@ static func get_self_command_data() -> Dictionary:
 
 func _get_flags() -> Dictionary:
 	var options = Options.new()
-	options.add_option("--prints", {&"help": "Use the print-family preset instead of a pattern (print, prints, printerr, print_debug, ...)."})
-	options.add_option("--include-commented", {&"help": "Also report matches on commented lines."})
-	options.add_option("--regex", {&"help": "Treat the pattern as a regular expression."})
-	options.add_option("--ignore-case", {&"help": "Case-insensitive match."})
+	options.add_option("--prints", {&"short": "p", &"help": "Use the print-family preset instead of a pattern (print, prints, printerr, print_debug, ...)."})
+	options.add_option("--include-commented", {&"short": "c", &"help": "Also report matches on commented lines."})
+	options.add_option("--regex", {&"short": "E", &"help": "Treat the pattern as a regular expression."})
+	options.add_option("--ignore-case", {&"short": "i", &"help": "Case-insensitive match."})
 	options.add_option("--ext=", {&"help": "Extension to scan when no paths are given (default: gd).", &"trailing_char": ""})
 	return options.get_options()
 

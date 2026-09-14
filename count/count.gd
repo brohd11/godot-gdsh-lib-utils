@@ -18,8 +18,8 @@ static func get_self_command_data() -> Dictionary:
 
 func _get_flags() -> Dictionary:
 	var options = Options.new()
-	options.add_option("--words", {&"help": "Count whitespace-separated words."})
-	options.add_option("--chars", {&"help": "Count characters."})
+	options.add_option("--words", {&"short": "w", &"help": "Count whitespace-separated words."})
+	options.add_option("--chars", {&"short": "c", &"help": "Count characters."})
 	return options.get_options()
 
 func _process_flag(flag:String):

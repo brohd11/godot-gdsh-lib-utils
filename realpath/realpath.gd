@@ -21,6 +21,7 @@ static func get_self_command_data():
 func _get_flags() -> Dictionary:
 	var options = Options.new()
 	options.add_option("--global", {
+		&"short": "g",
 		&"help": "Convert the path to globalized"
 	})
 	return options.get_options()
