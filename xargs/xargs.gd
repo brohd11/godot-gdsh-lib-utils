@@ -27,7 +27,7 @@ func _execute(ctx:Context):
 			split_stdin.append(token.raw)
 	positional_args.append_array(split_stdin)
 	var new_command = " ".join(positional_args)
-	Execution.execute_command(new_command, {
+	await Execution.execute_command(new_command, {
 		&"parent_ctx": ctx
 	})
 	
