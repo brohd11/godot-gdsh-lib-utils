@@ -15,14 +15,14 @@ static func inputs(ctx:Context, args:Array[String], operand_count:int) -> Packed
 	return ctx.stdin.split("\n", false)
 
 
-## Prints fn(line) for each input. Empty results still print a line (append_output would
-## drop them), so output lines stay aligned with input lines.
+## Prints fn(line) for each input. Empty results still print a line (write_output keeps them,
+## where append_output would drop them), so output lines stay aligned with input lines.
 static func map_lines(ctx:Context, lines:PackedStringArray, fn:Callable) -> int:
 	if lines.is_empty():
 		ctx.append_error(NO_INPUT)
 		return Types.ExitCode.FAIL
 	for line in lines:
-		ctx.stdout += str(fn.call(line)) + "\n"
+		ctx.write_output(str(fn.call(line)) + "\n")
 	return Types.ExitCode.OK
 
 
@@ -35,5 +35,5 @@ static func filter_lines(ctx:Context, lines:PackedStringArray, pred:Callable, bo
 		matched = true
 		if bool_only:
 			break
-		ctx.stdout += line + "\n"
+		ctx.write_output(line + "\n")
 	return Types.ExitCode.OK if matched else Types.ExitCode.FAIL
