@@ -32,11 +32,36 @@ are non-discoverable, so `hidden` lists only `utils`; `utils ` completes them.
 | `open` | Reveal a path in the OS file manager (desktop) |
 | `pwd` / `realpath` | Working directory and path conversion |
 | `scan` | Search scripts for uncommented matches |
-| `strip_edges` | Strip stdin whitespace |
+| `str` | String ops (see below) |
 | `trash` | Move paths to the OS trash (desktop) |
 | `xargs` | Append stdin words to a command |
 
 Run `<command> --help` for flags.
+
+## String ops
+
+`str <op>` takes its operands first, then an optional text. Without the text it runs on
+each stdin line, printing one line per input:
+
+```
+str file res://a/b.gd              # b.gd
+ls -r | str ends_with .gd | str basedir
+if str begins_with -b res:// "$P" { echo local }
+```
+
+| Op | Use |
+| --- | --- |
+| `basedir` / `file` / `basename` / `extension` | Path parts |
+| `join <part>` | Append a path segment |
+| `begins_with` / `ends_with` / `contains <needle>` | Keep matching inputs; `-b` only sets the exit code, `-i` ignores case |
+| `trim_prefix` / `trim_suffix <affix>` | Remove an affix if present |
+| `replace <from> <to>` | Replace every occurrence (`-i` ignores case) |
+| `upper` / `lower` | Change case |
+| `strip_edges` | Strip whitespace (`--left`, `--right`) |
+| `slice <delimiter> <index>` | Field by delimiter; negative indexes count from the end |
+| `length` | Character count |
+
+Predicates exit 0 when any input matches. Quote a needle that starts with `-`.
 
 ## Host hooks
 

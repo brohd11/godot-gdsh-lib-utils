@@ -20,8 +20,29 @@ const COMMANDS = [
 	preload("res://addons/addon_lib/gdsh_lib/utils/pwd/pwd.gd"),
 	preload("res://addons/addon_lib/gdsh_lib/utils/realpath/realpath.gd"),
 	preload("res://addons/addon_lib/gdsh_lib/utils/scan/scan.gd"),
-	preload("res://addons/addon_lib/gdsh_lib/utils/strip_edges/strip_edges.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/str.gd"),
 	preload("res://addons/addon_lib/gdsh_lib/utils/tail/tail.gd"),
 	preload("res://addons/addon_lib/gdsh_lib/utils/trash/trash.gd"),
 	preload("res://addons/addon_lib/gdsh_lib/utils/xargs/xargs.gd"),
+]
+
+## Subcommands of the `str` namespace. Kept apart from COMMANDS, which mirrors the
+## top-level load; load_directory finds these through str.gd.
+const STR_COMMANDS = [
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/basedir/basedir.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/basename/basename.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/begins_with/begins_with.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/contains/contains.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/ends_with/ends_with.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/extension/extension.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/file/file.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/join/join.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/length/length.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/lower/lower.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/replace/replace.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/slice/slice.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/strip_edges/strip_edges.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/trim_prefix/trim_prefix.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/trim_suffix/trim_suffix.gd"),
+	preload("res://addons/addon_lib/gdsh_lib/utils/str/upper/upper.gd"),
 ]
