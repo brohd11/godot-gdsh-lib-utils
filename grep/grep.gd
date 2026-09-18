@@ -1,4 +1,4 @@
-extends "res://addons/addon_lib/gdsh/command_base.gd"
+extends "res://addons/addon_lib/gdsh/src/core/command_base.gd"
 
 const _HELP = \
 "Keep stdin lines matching a pattern (substring by default).

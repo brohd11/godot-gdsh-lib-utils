@@ -1,4 +1,4 @@
-extends "res://addons/addon_lib/gdsh/command_base.gd"
+extends "res://addons/addon_lib/gdsh/src/core/command_base.gd"
 ## Namespace for string ops. Children are the sibling `name/name.gd` dirs; str_util.gd and
 ## match_base.gd are shared scripts, not commands.
 

@@ -1,4 +1,4 @@
-extends "res://addons/addon_lib/gdsh/command_base.gd"
+extends "res://addons/addon_lib/gdsh/src/core/command_base.gd"
 
 const _NAME_COLOR = Color.SKY_BLUE
 const _PARENT_COLOR = Color("4d819a")

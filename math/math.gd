@@ -1,5 +1,5 @@
-extends "res://addons/addon_lib/gdsh/command_base.gd"
-const Expr = preload("res://addons/addon_lib/gdsh/builtins/expr/expr.gd")
+extends "res://addons/addon_lib/gdsh/src/core/command_base.gd"
+const Expr = preload("res://addons/addon_lib/gdsh/src/core/builtins/expr/expr.gd")
 
 const _HELP = \
 "Run expression through Godot's Expression class.

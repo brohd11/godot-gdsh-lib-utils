@@ -1,6 +1,6 @@
-extends "res://addons/addon_lib/gdsh/command_base.gd"
+extends "res://addons/addon_lib/gdsh/src/core/command_base.gd"
 
-const Lexer = preload("res://addons/addon_lib/gdsh/internal/lexer.gd")
+const Lexer = preload("res://addons/addon_lib/gdsh/src/core/lexer.gd")
 
 const _HELP = \
 "Passes stdin as arguments to the following command(s).

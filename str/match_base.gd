@@ -1,4 +1,4 @@
-extends "res://addons/addon_lib/gdsh/command_base.gd"
+extends "res://addons/addon_lib/gdsh/src/core/command_base.gd"
 ## Base for str predicates: print the inputs that match, or with --bool only set the exit
 ## code. Subclasses implement _matches.
 

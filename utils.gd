@@ -1,4 +1,4 @@
-extends "res://addons/addon_lib/gdsh/command_base.gd"
+extends "res://addons/addon_lib/gdsh/src/core/command_base.gd"
 ## Namespace for the portable utilities in this directory. Children are discovered from
 ## the sibling `name/name.gd` directories, so they are listed even though each is
 ## non-discoverable at the top level.

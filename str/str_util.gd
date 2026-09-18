@@ -2,8 +2,8 @@ extends RefCounted
 ## Shared helpers for str commands. Operands come first, then an optional text argument;
 ## without that text an op runs on each stdin line, so a pipeline maps line for line.
 
-const Context = preload("res://addons/addon_lib/gdsh/context.gd")
-const Types = preload("res://addons/addon_lib/gdsh/internal/types.gd")
+const Context = preload("res://addons/addon_lib/gdsh/src/core/context.gd")
+const Types = preload("res://addons/addon_lib/gdsh/src/core/types.gd")
 
 const NO_INPUT = "No input (argument or stdin)."
 

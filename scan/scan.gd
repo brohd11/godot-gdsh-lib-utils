@@ -1,4 +1,4 @@
-extends "res://addons/addon_lib/gdsh/command_base.gd"
+extends "res://addons/addon_lib/gdsh/src/core/command_base.gd"
 
 const _HELP = \
 "Search scripts for a pattern, reporting only UNCOMMENTED matches (code that will run).
