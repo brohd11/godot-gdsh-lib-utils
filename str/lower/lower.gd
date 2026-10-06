@@ -1,6 +1,6 @@
-extends "res://addons/addon_lib/gdsh/src/core/command_base.gd"
+extends "res://addons/_lib/gdsh/src/core/command_base.gd"
 
-const StrUtil = preload("res://addons/addon_lib/gdsh_lib/utils/str/str_util.gd")
+const StrUtil = preload("res://addons/_lib/gdsh_lib/utils/str/str_util.gd")
 
 const _HELP = \
 "Lowercase (String.to_lower).

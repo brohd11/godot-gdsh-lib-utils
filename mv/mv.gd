@@ -1,4 +1,4 @@
-extends "res://addons/addon_lib/gdsh/src/core/command_base.gd"
+extends "res://addons/_lib/gdsh/src/core/command_base.gd"
 
 const _HELP = \
 "Move or rename a file/directory in the project.

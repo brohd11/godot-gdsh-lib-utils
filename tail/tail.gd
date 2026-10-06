@@ -1,4 +1,4 @@
-extends "res://addons/addon_lib/gdsh/src/core/command_base.gd"
+extends "res://addons/_lib/gdsh/src/core/command_base.gd"
 
 const _HELP = \
 "Output the last N lines of stdin (default 10).

@@ -1,8 +1,8 @@
-extends "res://addons/addon_lib/gdsh/src/core/command_base.gd"
+extends "res://addons/_lib/gdsh/src/core/command_base.gd"
 ## Base for str predicates: print the inputs that match, or with --bool only set the exit
 ## code. Subclasses implement _matches.
 
-const StrUtil = preload("res://addons/addon_lib/gdsh_lib/utils/str/str_util.gd")
+const StrUtil = preload("res://addons/_lib/gdsh_lib/utils/str/str_util.gd")
 
 var bool_flag := false
 var ignore_case_flag := false

@@ -1,4 +1,4 @@
-extends "res://addons/addon_lib/gdsh_lib/utils/str/match_base.gd"
+extends "res://addons/_lib/gdsh_lib/utils/str/match_base.gd"
 
 const _HELP = \
 "Keep inputs that contain a substring; -b only sets the exit code.
