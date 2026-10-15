@@ -75,7 +75,7 @@ Commands that list or change project files use `GDSh.Utils` host hooks from
 
 ## Exporting
 
-`manifest.gd` preloads every command for use with [PluginExporter](https://github.com/brohd11/Godot-Plugin-Exporter)
+`manifest.gd` preloads every command for use with [PackageExporter](https://github.com/brohd11/godot-package-exporter)
 
 ## Install
 
