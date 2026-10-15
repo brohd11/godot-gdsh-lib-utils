@@ -9,7 +9,7 @@ same commands as Editor Console.
 ```gdscript
 var ctx = GDSh.Context.new()
 # Hidden: callable by name (`count`) or through the `utils` namespace (`utils count`).
-ctx.load("res://addons/_lib/gdsh_lib/utils", true)
+ctx.load("res://addons/_lib/gdsh_lib/utils/src", true)
 ```
 
 `GDSh.Load.load_directory(path)` returns the scope dictionary instead. The commands
@@ -90,5 +90,5 @@ gdaddon install brohd11/godot-gdsh-lib-utils
 ## Validation
 
 ```sh
-python3 tests/gdsh_lib/run_headless.py --godot godot --export
+python3 addons/_lib/gdsh_lib/utils/_export_ignore/test/run_headless.py --godot godot --export
 ```
