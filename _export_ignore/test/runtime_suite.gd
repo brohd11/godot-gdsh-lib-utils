@@ -15,6 +15,7 @@ func run_sync():
 	_test_streams()
 	_test_str()
 	_test_paths()
+	_test_path_completion()
 	_test_filesystem()
 	_test_class()
 
@@ -170,6 +171,30 @@ func _test_paths():
 	equal(out("cat sample.txt", "", ctx), "sample text", "cat resolves paths from cwd")
 	ctx.host_data["file_paths"] = func(directories): return PackedStringArray([] if directories else [FIXTURES + "/cached.txt"])
 	equal(out("find cached", "", ctx), FIXTURES + "/cached.txt", "find uses the host file_paths hook")
+
+
+func _test_path_completion():
+	var ctx = session()
+	ctx.cwd = FIXTURES
+	for command in ["cat", "check", "mkdir", "mv", "trash", "ls", "open", "realpath"]:
+		for prefix in ["", "utils "]:
+			var text = prefix + command + " ./"
+			var choices = Sh.Completion.new(text, ctx).get_completions()
+			check(choices.has("sample.txt") and choices.has("nested"), "utility completes files and directories: " + text)
+	for text in ["mv ./sample.txt ./", "utils mv ./sample.txt ./", "trash ./sample.txt ./nested/inner.txt ./"]:
+		check(Sh.Completion.new(text, ctx).get_completions().has("sample.txt"), "later path argument completes: " + text)
+	var quoted = Sh.Completion.new('cat "./nested/', ctx).get_completions()
+	check(quoted.has("inner.txt"), "cat completes quoted paths")
+	if quoted.has("inner.txt"):
+		equal(quoted["inner.txt"][Sh.Options.Keys.METADATA][Sh.Options.Keys.INSERT], '"./nested/inner.txt"', "cat preserves path quoting")
+	for text in ["scan ./", "scan -i ./", "find ./", "grep ./", "head ./", "tail ./"]:
+		check(not Sh.Completion.new(text, ctx).get_completions().has("sample.txt"), "non-path argument excludes filesystem suggestions: " + text)
+	for text in ["scan pattern ./", "scan pattern ./sample.txt ./", "scan --prints ./", "scan -p ./", "scan -pi ./", "utils scan pattern ./"]:
+		check(Sh.Completion.new(text, ctx).get_completions().has("sample.txt"), "scan completes path arguments: " + text)
+	var flags = Sh.Completion.new("scan -i pattern ", ctx).get_completions()
+	check(flags.has("--regex") and not flags.has("--ignore-case"), "scan retains flags after its pattern and hides consumed flags")
+	flags = Sh.Completion.new("scan ./", ctx).get_completions()
+	check(flags.has("--prints"), "scan retains flags while typing a pattern")
 
 
 func _test_filesystem():

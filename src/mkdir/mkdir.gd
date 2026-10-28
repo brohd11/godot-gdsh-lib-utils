@@ -12,6 +12,7 @@ static func get_self_command_data() -> Dictionary:
 		&"discoverable": false,
 		&"help": _HELP,
 		&"positional_count": 1,
+		&"allow_positional_paths": true,
 	})
 
 func _execute(ctx:Context):

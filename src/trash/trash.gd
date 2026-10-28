@@ -12,6 +12,7 @@ static func get_self_command_data() -> Dictionary:
 	return _command_data({
 		&"discoverable": false,
 		&"help": _HELP,
+		&"allow_positional_paths": true,
 	})
 
 func _get_target_positional_count() -> int:

@@ -25,7 +25,14 @@ static func get_self_command_data() -> Dictionary:
 		&"discoverable": false,
 		&"help": _HELP,
 		&"positional_count": "min:0",
+		&"allow_positional_paths": true,
 	})
+
+func _get_completions(completion:Completion) -> Dictionary:
+	# The first positional is a pattern unless the print preset supplies it.
+	if not prints_flag and positional_arg_index == 0:
+		return get_flags(true)
+	return _get_completion_std_w_context(completion)
 
 func _get_flags() -> Dictionary:
 	var options = Options.new()
