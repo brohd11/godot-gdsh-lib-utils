@@ -92,6 +92,15 @@ func _test_streams():
 	check(not after_short.has("--ignore-case") and after_short.has("--invert"), "completion hides flags given in short form")
 	equal(out("math 2 + 3"), "5", "math")
 	equal(out("xargs echo", "one 'two words'\nthree"), "one two words three", "xargs keeps quoted words")
+	var passed = run("xargs str ends_with --bool .gd", "a.gd")
+	check(passed.exit_code == 0 and passed.stdout.is_empty(), "xargs passes the command's long flags through: " + passed.stderr)
+	equal(out("xargs str ends_with -i .GD", "a.gd"), "a.gd", "xargs passes the command's short flags through")
+	equal(out("xargs -n 1 echo", "a b c"), "a\nb\nc", "xargs -n 1 runs once per word")
+	equal(out("xargs -n2 echo", "a b c"), "a b\nc", "xargs -nN chunks words")
+	equal(out("xargs --max-args=2 echo", "a b c"), "a b\nc", "xargs --max-args chunks words")
+	check(run("xargs -n 1 str ends_with -b .gd", "x.gd y.txt").exit_code != 0, "xargs -n fails when any run fails")
+	check(run("xargs -n 0 echo", "a").exit_code != 0, "xargs -n rejects a non-positive count")
+	check(run("xargs --help").stdout.contains("--max-args"), "xargs help before the command is its own")
 	equal(out("echo a | hidden utils count"), "1", "utils route through hidden and their namespace")
 
 
@@ -107,7 +116,10 @@ func _test_str():
 
 	equal(out("str basedir res://a/b.gd"), "res://a", "basedir")
 	equal(out("str file res://a/b.gd"), "b.gd", "file")
-	equal(out("str basename res://a/b.gd"), "res://a/b", "basename")
+	equal(out("str basename res://a/b.gd"), "b.gd", "basename is Unix basename")
+	equal(out("str basename res://a/b/"), "b", "basename drops trailing slashes")
+	equal(out("str basename res://"), "res://", "basename keeps a bare root")
+	equal(out("str basename --gd res://a/b.gd"), "res://a/b", "basename --gd is String.get_basename")
 	equal(out("str extension res://a/b.gd"), "gd", "extension")
 	equal(out("str join c.gd res://a"), "res://a/c.gd", "join")
 	equal(out("str file", "res://a/x.gd\nres://b/y.tscn\n"), "x.gd\ny.tscn", "ops map stdin lines")

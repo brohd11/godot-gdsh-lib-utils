@@ -55,6 +55,9 @@ func _check_one(path:String) -> Dictionary:
 		var text := FileAccess.get_file_as_string(path)
 		var script := GDScript.new()
 		script.source_code = text
+		# Give the copy the real path (without taking over the cache) so class_name
+		# and relative preloads resolve as they do for the real script.
+		script.set_path_cache(path)
 		var err := script.reload()
 		if err != OK:
 			return {"ok": false, "message": error_string(err)}
