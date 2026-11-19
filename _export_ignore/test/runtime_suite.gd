@@ -17,6 +17,7 @@ func run_sync():
 	_test_paths()
 	_test_path_completion()
 	_test_filesystem()
+	_test_check()
 	_test_class()
 
 
@@ -227,6 +228,31 @@ func _test_filesystem():
 	equal(run("mkdir " + root + "/c").exit_code, 0, "file commands work without a host hook")
 	for path in [root + "/b", root + "/c", root]:
 		DirAccess.remove_absolute(path)
+
+
+func _test_check():
+	var root = OS.get_temp_dir().path_join("gdsh_lib_check_test_expected_error_%d" % OS.get_process_id())
+	DirAccess.make_dir_recursive_absolute(root)
+	var good = root.path_join("good.gd")
+	_write(good, "extends RefCounted\nstatic func v(): return 1\n")
+	equal(out("check " + good), good + ": OK", "check passes a valid script")
+	check(ResourceLoader.has_cached(good), "check loads the real script first, so its copy never becomes the cached one")
+	# The loaded version is valid; the file now isn't. check reports the file.
+	_write(good, "extends RefCounted\n\nfunc broken(:\n\tpass\n")
+	var result = run("check " + good)
+	check(result.exit_code != 0 and result.stdout.begins_with(good + ": ERROR (Parse error)"), "check reports the file as it is now: " + result.stdout)
+	if UtilR.Objects.ErrorCapture.supported():
+		check(result.stdout.contains("\n  %s:3: Parse Error:" % good), "check prints the error line: " + result.stdout)
+	var piped = run("check", good + "\n" + root.path_join("missing.gd"))
+	check(piped.exit_code != 0 and piped.stdout.contains("missing.gd: ERROR (file not found)"), "check reads paths from stdin")
+	DirAccess.remove_absolute(good)
+	DirAccess.remove_absolute(root)
+
+
+func _write(path:String, text:String) -> void:
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	file.store_string(text)
+	file.close()
 
 
 func _test_class():
