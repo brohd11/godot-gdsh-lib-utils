@@ -207,6 +207,9 @@ func _test_path_completion():
 	check(flags.has("--regex") and not flags.has("--ignore-case"), "scan retains flags after its pattern and hides consumed flags")
 	flags = Sh.Completion.new("scan ./", ctx).get_completions()
 	check(flags.has("--prints"), "scan retains flags while typing a pattern")
+	var suite_path = FIXTURES.get_base_dir().path_join("runtime_suite.gd")
+	var hits = out('scan "func _test_paths" ' + suite_path)
+	check(hits.begins_with(suite_path + ":") and not hits.contains("[url"), "scan prints plain path:line:text; consoles add links: " + hits)
 
 
 func _test_filesystem():
