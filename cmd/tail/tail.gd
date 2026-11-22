@@ -24,3 +24,4 @@ func _execute(ctx:Context):
 	var start = max(0, lines.size() - n)
 	for i in range(start, lines.size()):
 		ctx.append_output(lines[i])
+	return ExitCode.OK

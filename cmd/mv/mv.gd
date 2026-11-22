@@ -37,3 +37,4 @@ func _execute(ctx:Context):
 		return ExitCode.FAIL
 	Utils.filesystem_changed(ctx)
 	ctx.append_output(dest)
+	return ExitCode.OK

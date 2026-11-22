@@ -18,3 +18,4 @@ static func get_self_command_data():
 
 func _execute(ctx:Context):
 	Expr.run_expr(ctx, positional_args)
+	return ctx.exit_code

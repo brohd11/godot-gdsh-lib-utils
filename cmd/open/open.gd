@@ -24,3 +24,4 @@ func _execute(ctx:Context):
 		ctx.append_error("Path does not exist: " + dir)
 		return ExitCode.FAIL
 	OS.shell_show_in_file_manager(globalized)
+	return ExitCode.OK

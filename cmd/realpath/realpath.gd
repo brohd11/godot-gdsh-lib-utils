@@ -42,3 +42,4 @@ func _execute(ctx:Context):
 	else:
 		converted = ProjectSettings.localize_path(converted)
 	ctx.append_output(converted)
+	return ExitCode.OK

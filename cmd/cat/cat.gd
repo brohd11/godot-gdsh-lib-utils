@@ -40,3 +40,4 @@ func _execute(ctx:Context):
 		ctx.append_error("Could not read file (error %s): %s" % [err, path])
 		return ExitCode.FAIL
 	ctx.append_output(text)
+	return ExitCode.OK

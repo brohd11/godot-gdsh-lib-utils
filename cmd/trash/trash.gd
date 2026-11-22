@@ -46,3 +46,4 @@ func _execute(ctx:Context):
 	if count > 0:
 		Utils.filesystem_changed(ctx)
 	ctx.append_output("Moved %s item(s) to trash." % count)
+	return ExitCode.OK

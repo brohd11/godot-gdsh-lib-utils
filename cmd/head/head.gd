@@ -23,3 +23,4 @@ func _execute(ctx:Context):
 	var lines = ctx.stdin.split("\n", false)
 	for i in range(min(n, lines.size())):
 		ctx.append_output(lines[i])
+	return ExitCode.OK

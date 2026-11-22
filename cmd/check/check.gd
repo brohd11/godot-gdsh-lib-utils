@@ -1,7 +1,5 @@
 extends "res://addons/_lib/gdsh/src/core/command_base.gd"
 
-const ErrorCapture = UtilR.Objects.ErrorCapture
-
 const _HELP = \
 "Validate that a script or scene loads, reporting 'path: OK' or 'path: ERROR (...)'.
 Path comes from the argument or from stdin (one per line, pipeable). Any failure

@@ -60,3 +60,4 @@ func _execute(ctx:Context):
 			matched = line.contains(pattern)
 		if matched != invert_flag:
 			ctx.append_output(line)
+	return ExitCode.OK

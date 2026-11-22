@@ -57,3 +57,4 @@ func _execute(ctx:Context):
 	if matches == 0:
 		ctx.append_error("No files matched: " + pattern)
 		return ExitCode.FAIL
+	return ExitCode.OK

@@ -35,3 +35,4 @@ func _execute(ctx:Context):
 	else:
 		p = ProjectSettings.globalize_path(p)
 	ctx.append_output(p)
+	return ExitCode.OK

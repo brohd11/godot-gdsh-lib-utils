@@ -36,3 +36,4 @@ func _execute(ctx:Context):
 		ctx.append_output(str(text.split(" ", false).size() if text != "" else 0))
 	else:
 		ctx.append_output(str(ctx.stdin.split("\n", false).size()))
+	return ExitCode.OK

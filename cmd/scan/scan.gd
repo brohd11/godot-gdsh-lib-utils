@@ -113,6 +113,7 @@ func _execute(ctx:Context):
 	if hits == 0:
 		ctx.append_error("No matches for: " + ("--prints" if prints_flag else pattern))
 		return ExitCode.FAIL
+	return ExitCode.OK
 
 # Returns the start index of the match within `line`, or -1 if none.
 func _match_index(line:String, pattern:String, regex:RegEx, use_regex:bool) -> int:

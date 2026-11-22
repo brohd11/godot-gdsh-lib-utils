@@ -74,15 +74,16 @@ func _execute(ctx:Context):
 					if not full_path_flag:
 						f = f.trim_prefix(dir)
 					ctx.append_output(f)
-		return
+		return ExitCode.OK
 
 	for d in DirAccess.get_directories_at(dir):
 		ctx.append_output(_process_path(d, dir, true))
 	if dirs_flag:
-		return
+		return ExitCode.OK
 	for f in DirAccess.get_files_at(dir):
 		if _ext_ok(f):
 			ctx.append_output(_process_path(f, dir, false))
+	return ExitCode.OK
 
 func _ext_ok(path:String) -> bool:
 	return ext_flag == "" or path.get_extension() == ext_flag
