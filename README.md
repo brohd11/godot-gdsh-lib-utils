@@ -9,7 +9,7 @@ same commands as Editor Console.
 ```gdscript
 var ctx = GDSh.Context.new()
 # Hidden: callable by name (`count`) or through the `utils` namespace (`utils count`).
-ctx.load("res://addons/_lib/gdsh_lib/utils/src", true)
+ctx.load("res://addons/_lib/gdsh_lib/utils/cmd", true)
 ```
 
 `GDSh.Load.load_directory(path)` returns the scope dictionary instead. The commands

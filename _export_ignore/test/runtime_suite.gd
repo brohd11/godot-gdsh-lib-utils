@@ -2,8 +2,8 @@ extends RefCounted
 ## gdsh_lib utils runtime checks, driven by runtime_test.gd (headless and editor console `test`).
 
 const Sh = preload("res://addons/_lib/gdsh/_ns/gd_sh.gd")
-const Manifest = preload("res://addons/_lib/gdsh_lib/utils/src/manifest.gd")
-const UTILS = "res://addons/_lib/gdsh_lib/utils/src"
+const Manifest = preload("res://addons/_lib/gdsh_lib/utils/cmd/manifest.gd")
+const UTILS = "res://addons/_lib/gdsh_lib/utils/cmd"
 const FIXTURES = "res://addons/_lib/gdsh_lib/utils/_export_ignore/test/fixtures"
 var checks = 0
 var failures = 0
@@ -76,7 +76,9 @@ func _test_loading():
 	check(not Sh.Completion.new("", ctx).get_completions().has("cat"), "utils load as hidden commands")
 	var hidden_choices = Sh.Completion.new("hidden ", ctx).get_completions()
 	check(hidden_choices.has("utils") and not hidden_choices.has("grep"), "hidden lists the utils namespace, not its children")
-	check(Sh.Completion.new("utils ", ctx).get_completions().has("grep"), "utils namespace lists its commands")
+	var utils_choices = Sh.Completion.new("utils ", ctx).get_completions()
+	check(utils_choices.has("grep"), "utils namespace lists its commands")
+	check(not utils_choices.has("utils"), "utils namespace does not list itself")
 	equal(out("utils count", "a\nb", ctx), "2", "utils namespace routes to a command")
 
 
