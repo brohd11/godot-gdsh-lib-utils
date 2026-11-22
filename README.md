@@ -4,6 +4,8 @@ Portable shell utilities for [GDSh](https://github.com/brohd11/godot-gdsh.git)
 consoles. They have no editor dependency, so a runtime debug console can use the
 same commands as Editor Console.
 
+Install: see [Command packages](https://github.com/brohd11/godot-gdsh/blob/main/_export_ignore/docs/packages.md) in the gdsh repo.
+
 ## Loading
 
 ```gdscript
@@ -76,16 +78,6 @@ Commands that list or change project files use `GDSh.Utils` host hooks from
 ## Exporting
 
 `manifest.gd` preloads every command for use with [GDPackage](https://github.com/brohd11/godot-gdpackage)
-
-## Install
-
-Download the release and place the contents in the addons folder.
-
-I use [gdaddon](https://github.com/brohd11/gdaddon) to manage the addon.
-```
-cd ~/your/project/
-gdaddon install brohd11/godot-gdsh-lib-utils
-```
 
 ## Validation
 
