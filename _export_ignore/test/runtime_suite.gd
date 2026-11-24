@@ -189,6 +189,8 @@ func _test_paths():
 	equal(out("cat sample.txt", "", ctx), "sample text", "cat resolves paths from cwd")
 	ctx.host_data["file_paths"] = func(directories): return PackedStringArray([] if directories else [FIXTURES + "/cached.txt"])
 	equal(out("find cached", "", ctx), FIXTURES + "/cached.txt", "find uses the host file_paths hook")
+	var home = out("home")
+	check(not home.is_empty() and DirAccess.dir_exists_absolute(home), "home prints an existing dir: " + home)
 
 
 func _test_path_completion():

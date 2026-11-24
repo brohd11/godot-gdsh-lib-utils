@@ -28,6 +28,7 @@ are non-discoverable, so `hidden` lists only `utils`; `utils ` completes them.
 | `find` | Find project files by name or glob |
 | `grep` | Keep matching stdin lines |
 | `head` / `tail` | First or last N stdin lines |
+| `home` | Print the user's home directory |
 | `ls` | List a directory, optionally recursive |
 | `math` | Evaluate an expression (GDSh `expr`) |
 | `mkdir` / `mv` | Create directories, move files |
