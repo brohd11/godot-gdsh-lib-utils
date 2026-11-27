@@ -117,7 +117,7 @@ func _test_str():
 	check(not Sh.Completion.new("hidden ", ctx).get_completions().has("str"), "str stays under the utils namespace")
 	check(Sh.Completion.new("utils ", ctx).get_completions().has("str"), "utils lists str")
 	var ops = Sh.Completion.new("str ", ctx).get_completions()
-	check(ops.has("basedir") and ops.has("strip_edges") and not ops.has("str_util") and not ops.has("match_base"), "str completes its ops, not its shared scripts")
+	check(ops.has("basedir") and ops.has("strip_edges") and not ops.has("str_util") and not ops.has("match_util"), "str completes its ops, not its shared scripts")
 	check(not Sh.Completion.new("", ctx).get_completions().has("strip_edges"), "strip_edges moved under str")
 
 	equal(out("str basedir res://a/b.gd"), "res://a", "basedir")
